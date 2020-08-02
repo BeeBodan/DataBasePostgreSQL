@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.bogdan</groupId>
-    <artifactId>DataBaseStorage</artifactId>
-    <version>0.0.1</version>
+    <artifactId>postgresqlCRUD</artifactId>
+    <version>0.1</version>
 
     <dependencies>
 

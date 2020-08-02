@@ -3,11 +3,11 @@ package com.bogdan.model;
 import javax.persistence.*;
 
 @Entity
-@Table (name = "users")
+@Table (name = "crud.users")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
     @Column (name = "name")

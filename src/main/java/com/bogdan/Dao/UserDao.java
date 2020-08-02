@@ -12,6 +12,7 @@ import java.util.List;
 public class UserDao implements Storage {
 
     public void addUser(User user) {
+        //Create session factory object and getting session object from session factory
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.save(user);
@@ -19,13 +20,12 @@ public class UserDao implements Storage {
         session.close();
     }
 
-    public void removeAll() {
+    public void updateUser(User user) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        String hql = String.format("DELETE FROM %s", User.class.getSimpleName());
-        Query query = session.createQuery(hql);
-        query.executeUpdate();
+        session.update(user);
         transaction.commit();
+        session.close();
     }
 
     public void removeUserById(int id) {
@@ -33,6 +33,7 @@ public class UserDao implements Storage {
         Transaction transaction = session.beginTransaction();
         session.delete(getUserById(id));
         transaction.commit();
+        session.close();
     }
 
     public void removeUserByName(String name) {
@@ -40,29 +41,35 @@ public class UserDao implements Storage {
         Transaction transaction = session.beginTransaction();
         session.delete(getUserByName(name));
         transaction.commit();
+        session.close();
+    }
+
+    public void removeAll() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        String sql = String.format("DELETE FROM %s", User.class.getSimpleName());
+        Query query = session.createQuery(sql);
+        query.executeUpdate();
+        transaction.commit();
+        session.close();
     }
 
     public User getUserById(int id) {
         return HibernateUtil.getSessionFactory().openSession().get(User.class, id);
     }
 
-    public User getUserByName(String name) {
+    public List<User> getUserByName(String name) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         return session
-                .createQuery("FROM User WHERE name = :name ", User.class)
+                .createQuery("FROM User WHERE name = :name", User.class)
                 .setParameter("name", name)
-                .getSingleResult();
+                .list();
     }
 
     public List<User> getAllUsers() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        return session.createQuery("FROM User", User.class).list();
-    }
-
-    public void updateUser(User user) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.update(user);
         transaction.commit();
+        return session.createQuery("FROM User", User.class).list();
     }
 }

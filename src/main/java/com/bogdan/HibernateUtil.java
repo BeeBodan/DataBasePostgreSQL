@@ -18,9 +18,8 @@ public class HibernateUtil {
                 configuration.addAnnotatedClass(User.class);
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder.build());
-
             } catch (Exception e) {
-                System.out.println("Исключение!" + e);
+                System.out.println("Enitial SessionFactory creation failed" + e);
             }
         }
         return sessionFactory;

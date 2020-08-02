@@ -18,7 +18,7 @@ public interface Storage {
 
     User getUserById(int id);
 
-    User getUserByName(String name);
+    List<User> getUserByName(String name);
 
     List<User> getAllUsers();
 }
