@@ -43,7 +43,7 @@ Implement an interface with methods:
 Result in database:
 
 ![Screenshot](https://github.com/bbogdasha/postgresqlCRUD/blob/master/screenshoots/Screenshot_1.jpg)
----------------------------
+===========================
 
 **2. (R)** The second action is the output of information requested for different parameters (id, name, all). 
 
@@ -56,7 +56,7 @@ Result in database:
 Result:
 
 ![Screenshot](https://github.com/bbogdasha/postgresqlCRUD/blob/master/screenshoots/Screenshot_2.jpg)
----------------------------
+===========================
 
 **3. (U)** Third step - updating user data. 
 
@@ -71,7 +71,7 @@ Result:
 Result: 
 
 ![Screenshot](https://github.com/bbogdasha/postgresqlCRUD/blob/master/screenshoots/Screenshot_3.jpg)
----------------------------
+===========================
 
 **4. (D)** And the last operation to delete users with different parameters (id, name, all). 
 
